@@ -11,7 +11,7 @@ jobs:
   include:
   - stage: Build Docker
     script: "./travis_scripts/docker-build.sh"
-    if: "(NOT type IN (pull_request)) AND ((branch = master) OR (branch = /^v.*$/))"
+    if: "(NOT type IN (pull_request)) AND ((branch = master) OR (tag IS present))"
 env:
   global:
   - secure: jZQSq6M588j9dQDP7kV6qH7Sln03IOssE0TbSTsFLLx5xO2ErndaVVYhnwvHRGylfmAlubUPtLq7pKpIycQk1HzVLZrgZA89ydZEj8vLfCkNcJlEW2nAPzsInd/LJkxyiRtgSAfMG6JT+RT2eGko81LC227ejwmwJ5ZmU+Sx8836KiEurLIHUBUAdMPAxctPNI454CfKFmK8GI+MYtY8lWiyi/LfOE4KkRwkZww3e2cBWWPsBKgC0NkILyDXBqhVcHqOxVqPRTSNAPycuNSR07XZR7H4yquSVztYT2kpIgp4o5/E6eh5mcVAOCJhWKwLrYRUznQZiKiMRrIBxKLyTupo/pGLKn5Tlo30XwoaZtzHO9PZVBVE7BgJpdt4wbTr7hpeFeqbgrdeX/6n3ALYZOZ7rsQ5tS2gVb6y+RDXtIr0JFfNiDNaq4afkatmIQSPsU3/I3vGAGXVRvfTrbofSzua+ralnWai7spWtHZZQDc1fls0CDvFcLrPCI3NTEIdQRHfSzOa9bImDSRdo39C/Wu6G5ZqP013geqTg+UNjNecvbXE+NmEeitcx/oDLIRyGkmPWqUyDDz2z5UVVauEYio2JVbzhx8wP5mhyx8TwzqfvCsV7LlTVMjEvmtRiFFdiJNhSKdk1ORLg006v5DDlymx3BNBKagHwioVqY1I49Y=
