@@ -1,0 +1,13 @@
+{
+  "frequency": 5,
+  "countries": [
+    {
+      "name": "Finland",
+      "stream_name": "dVoD8tzLR6KLJ-z_Pz8pMQ",
+      "code": "FI",
+      "cities": [
+        "Uusimaa"
+      ]
+    }
+  ]
+}
