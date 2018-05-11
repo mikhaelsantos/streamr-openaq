@@ -11,7 +11,7 @@ jobs:
   include:
   - stage: Build Docker
     script: "./travis_scripts/docker-build.sh"
-    if: "(NOT type IN (pull_request)) AND branch = master)"
+   # if: "(NOT type IN (pull_request)) AND branch = master)"
     deploy:
      - provider: script
        script: "./travis_scripts/docker-deploy.sh"
