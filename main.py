@@ -83,7 +83,7 @@ def main():
         '%(asctime)s-%(name)s-%(levelname)s: %(message)s')
     handler.setFormatter(formatter)
     logger.addHandler(handler)
-    logger.setLevel(os.environ.get("LOG_LEVEL", logging.DEBUG))
+    logger.setLevel(os.environ.get("LOG_LEVEL", logging.INFO))
     logger.info("Starting openaq")
     logger.debug("Config:")
     logger.debug(config)
