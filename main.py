@@ -42,7 +42,7 @@ def start_pull(config: dict):
                     try:
                         date_from = (datetime.utcnow() - timedelta(minutes=config["frequency"])).strftime(
                             "%Y-%m-%dT%H:%M:%S")
-                        logging.info("Getting from "+date_from + "page " + page)
+                        logging.info("Getting from "+date_from + "page " + str(page))
                         mesaurement = api.measurements(country=country["code"], city=city,
                                                        date_from=date_from,
                                                        page=page)
@@ -69,7 +69,7 @@ def start_pull(config: dict):
                                 oldtime = time.time()
                         page = page + 1
                     except Exception as e:
-                        logging.error(e)
+                        logging.exception(e)
 
         logging.info("End Cycle")
         logging.info("Messages sent during cycle: " + str(message_total))
@@ -83,7 +83,7 @@ def main():
         '%(asctime)s-%(name)s-%(levelname)s: %(message)s')
     handler.setFormatter(formatter)
     logger.addHandler(handler)
-    logger.setLevel(os.environ.get("LOG_LEVEL", logging.INFO))
+    logger.setLevel(os.environ.get("LOG_LEVEL", logging.DEBUG))
     logger.info("Starting openaq")
     logger.debug("Config:")
     logger.debug(config)
