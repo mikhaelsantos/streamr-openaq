@@ -42,7 +42,7 @@ def start_pull(config: dict):
                     try:
                         date_from = (datetime.utcnow() - timedelta(minutes=config["frequency"])).strftime(
                             "%Y-%m-%dT%H:%M:%S")
-                        logging.info("Getting from "+date_from)
+                        logging.info("Getting from "+date_from + "page " + page)
                         mesaurement = api.measurements(country=country["code"], city=city,
                                                        date_from=date_from,
                                                        page=page)
@@ -60,6 +60,7 @@ def start_pull(config: dict):
                                 raise Exception("Failed")
                             else:
                                 message_stat = message_stat + 1
+                                message_total = message_total + 1
 
                             # check
                             if time.time() - oldtime > 59:
@@ -71,7 +72,7 @@ def start_pull(config: dict):
                         logging.error(e)
 
         logging.info("End Cycle")
-        logging.info("Messages sent: " + str(message_total))
+        logging.info("Messages sent during cycle: " + str(message_total))
         time.sleep(config["frequency"] * 60)
 
 
@@ -79,7 +80,7 @@ def main():
     with open('config.json') as f:
         config = json.load(f)
     formatter = logging.Formatter(
-        '%(asctime)s %(name)-12s %(levelname)-8s %(message)s')
+        '%(asctime)s-%(name)s-%(levelname)s: %(message)s')
     handler.setFormatter(formatter)
     logger.addHandler(handler)
     logger.setLevel(os.environ.get("LOG_LEVEL", logging.INFO))
@@ -91,3 +92,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+
